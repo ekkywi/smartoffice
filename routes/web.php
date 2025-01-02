@@ -21,10 +21,11 @@ Route::get('/', function () {
 
 Route::get('/login', function () {
     return view('auth.pages.login');
-});
+})->name('login');
 
 Route::get('/register', function () {
     return view('auth.pages.register');
 });
 
-Route::get('/register', [AuthController::class, 'showDivisiList'])->name('divisi.list');
+Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [AuthController::class, 'register']);

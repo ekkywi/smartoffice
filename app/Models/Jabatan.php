@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class User extends Authenticatable
+class Jabatan extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'user_id';
+    protected $table = 'jabatan';
+    protected $primaryKey = 'jabatan_id';
     public $incrementing = false;
     protected $keyType = 'uuid';
 
@@ -23,22 +24,4 @@ class User extends Authenticatable
             }
         });
     }
-
-    protected $fillable = [
-        'name',
-        'divisi_id',
-        'jabatan_id',
-        'username',
-        'password',
-        'status_aktivasi'
-    ];
-
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    protected $attributes = [
-        'status_aktivasi' => 0,
-    ];
 }

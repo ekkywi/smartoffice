@@ -28,7 +28,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <form action="#" method="POST">
+                                <form action="{{ route('register') }}" method="POST">
                                     @csrf
 
                                     <div class="form-outline mb-4" data-mdb-input-init>
@@ -42,6 +42,16 @@
                                             <option disabled selected value="">Pilih divisi Anda</option>
                                             @foreach ($divisi as $div)
                                                 <option value="{{ $div->divisi_id }}">{{ $div->nama_divisi }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-outline mb-4" data-mdb-input-init>
+                                        <label class="form-label" for="jabatan">Jabatan</label>
+                                        <select class="form-select form-control" id="jabatan" name="jabatan" required>
+                                            <option disabled selected value="">Pilih jabatan Anda</option>
+                                            @foreach ($jabatan as $jab)
+                                                <option value="{{ $jab->jabatan_id }}">{{ $jab->nama_jabatan }}</option>
                                             @endforeach
                                         </select>
                                     </div>

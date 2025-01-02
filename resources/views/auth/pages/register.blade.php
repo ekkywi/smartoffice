@@ -1,6 +1,6 @@
 @extends("auth.layouts.auth")
 @section("content")
-@section("title", "SmartOffice - Login")
+@section("title", "SmartOffice - Register")
 <section class="h-100 gradient-form">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -30,20 +30,42 @@
                                 @endif
                                 <form action="#" method="POST">
                                     @csrf
+
+                                    <div class="form-outline mb-4" data-mdb-input-init>
+                                        <label class="form-label" for="name">Nama</label>
+                                        <input class="form-control" id="name" name="name" placeholder="Masukan nama Anda" required type="text" />
+                                    </div>
+
                                     <div class="form-outline mb-4" data-mdb-input-init>
                                         <label class="form-label" for="username">Username</label>
                                         <input class="form-control" id="username" name="username" placeholder="Masukan username Anda" required type="text" />
                                     </div>
 
                                     <div class="form-outline mb-4" data-mdb-input-init>
+                                        <label class="form-label" for="divisi">Divisi</label>
+                                        <select class="form-select" id="divisi" name="divisi" required>
+                                            <option disabled selected value="">Pilih divisi Anda</option>
+                                            @foreach ($divisi as $div)
+                                                <option value="{{ $div->divisi_id }}">{{ $div->nama_divisi }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-outline mb-4" data-mdb-input-init>
                                         <label class="form-label" for="password">Password</label>
                                         <input class="form-control" id="password" name="password" placeholder="Masukan password Anda" required type="password" />
                                     </div>
-                                    <div class="text-center pt-1 mb-5 pb-1">
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 font-weight-bold" data-mdb-button-init data-mdb-ripple-init type="submit">Log in</button>
+
+                                    <div class="form-outline mb-4" data-mdb-input-init>
+                                        <label class="form-label" for="password_confirmation">Confirm Password</label>
+                                        <input class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Konfirmasi password Anda" required type="password" />
                                     </div>
-                                    <p class="text-center">Belum punya akun? <a href="#">Daftar</a></p>
-                                    <p class="text-center">Lupa password? <a href="#">Klik disini</a></p>
+
+                                    <div class="text-center pt-1 mb-5 pb-1">
+                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 font-weight-bold" data-mdb-button-init data-mdb-ripple-init type="submit">Register</button>
+                                        <p class="text-center">Sudah punya akun? <a href="#">Login</a></p>
+                                    </div>
+
                                 </form>
                             </div>
                         </div>

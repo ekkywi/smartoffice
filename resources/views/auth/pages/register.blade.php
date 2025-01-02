@@ -33,22 +33,22 @@
 
                                     <div class="form-outline mb-4" data-mdb-input-init>
                                         <label class="form-label" for="name">Nama</label>
-                                        <input class="form-control" id="name" name="name" placeholder="Masukan nama Anda" required type="text" />
-                                    </div>
-
-                                    <div class="form-outline mb-4" data-mdb-input-init>
-                                        <label class="form-label" for="username">Username</label>
-                                        <input class="form-control" id="username" name="username" placeholder="Masukan username Anda" required type="text" />
+                                        <input class="form-control" id="name" name="name" placeholder="Masukan nama lengkap Anda" required type="text" />
                                     </div>
 
                                     <div class="form-outline mb-4" data-mdb-input-init>
                                         <label class="form-label" for="divisi">Divisi</label>
-                                        <select class="form-select" id="divisi" name="divisi" required>
+                                        <select class="form-select form-control" id="divisi" name="divisi" required>
                                             <option disabled selected value="">Pilih divisi Anda</option>
                                             @foreach ($divisi as $div)
                                                 <option value="{{ $div->divisi_id }}">{{ $div->nama_divisi }}</option>
                                             @endforeach
                                         </select>
+                                    </div>
+
+                                    <div class="form-outline mb-4" data-mdb-input-init>
+                                        <label class="form-label" for="username">Username</label>
+                                        <input class="form-control" id="username" name="username" placeholder="Masukan username Anda" required type="text" />
                                     </div>
 
                                     <div class="form-outline mb-4" data-mdb-input-init>

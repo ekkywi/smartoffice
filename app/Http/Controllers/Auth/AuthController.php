@@ -55,4 +55,38 @@ class AuthController extends Controller
         // Redirect ke halaman login dengan pesan sukses
         return redirect()->route('register')->with('success', 'Registrasi berhasil. Silakan lakukan request aktivasi akun ke Administrator.');
     }
+
+    // Menampilkan halaman reset password
+    public function reset()
+    {
+        return view('auth.pages.reset');
+    }
+
+    // Memproses data reset password yang dikirimkan
+    public function resetPost(Request $request)
+    {
+        // Validasi data yang diterima
+        $request->validate([
+            'token' => 'required|string',
+            'username' => 'required|string|exists:users,username',
+            'password' => 'required|string|confirmed|min:8',
+        ]);
+
+        // Cari user berdasarkan token dan username
+        $user = User::where('reset_password_token', $request->token)
+            ->where('username', $request->username)
+            ->first();
+
+        if (!$user) {
+            return back()->withErrors(['token' => 'Token reset password tidak valid atau username tidak ditemukan.']);
+        }
+
+        // Update password dan buat token baru
+        $user->password = Hash::make($request->password);
+        $user->reset_password_token = Str::random(60);
+        $user->save();
+
+        // Redirect ke halaman login dengan pesan sukses
+        return redirect()->route('reset')->with('success', 'Password Anda telah berhasil direset!');
+    }
 }

@@ -21,3 +21,8 @@ route::get('login', [AuthController::class, 'index'])->name('login');
 // Rute untuk halaman registrasi
 Route::get('register', [AuthController::class, 'register'])->name('register'); // Menampilkan form registrasi
 Route::post('register', [AuthController::class, 'registerPost'])->name('registerPost'); // Memproses data registrasi
+
+
+// Rute untuk halaman reset
+Route::get('reset', [AuthController::class, 'reset'])->name('reset'); // Menampilkan form reset
+Route::post('reset', [AuthController::class, 'resetPost'])->name('resetPost'); // Memproses data reset

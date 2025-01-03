@@ -1,9 +1,9 @@
 @extends("auth.layouts.auth")
 @section("custom-css")
-    <link href="{{ asset("css/auth/login.css") }}" rel="stylesheet">
+    <link href="{{ asset("css/auth/reset.css") }}" rel="stylesheet">
 @endsection
 @section("content")
-@section("title", "SmartOffice - Login")
+@section("title", "SmartOffice - Reset")
 <section class="h-100 gradient-form">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -31,8 +31,13 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <form action="" method="POST">
+                                <form action="{{ route("resetPost") }}"" method="POST">
                                     @csrf
+                                    <div class="form-outline mb-4" data-mdb-input-init>
+                                        <label class="form-label" for="token">Reset Password Token</label>
+                                        <input class="form-control" id="token" name="token" placeholder="Masukan token reset Anda" required type="text" />
+                                    </div>
+
                                     <div class="form-outline mb-4" data-mdb-input-init>
                                         <label class="form-label" for="username">Username</label>
                                         <input class="form-control" id="username" name="username" placeholder="Masukan username Anda" required type="text" />
@@ -40,13 +45,18 @@
 
                                     <div class="form-outline mb-4" data-mdb-input-init>
                                         <label class="form-label" for="password">Password</label>
-                                        <input class="form-control" id="password" name="password" placeholder="Masukan password Anda" required type="password" />
+                                        <input class="form-control" id="password" name="password" placeholder="Masukan password baru Anda" required type="password" />
                                     </div>
+
+                                    <div class="form-outline mb-4" data-mdb-input-init>
+                                        <label class="form-label" for="password_confirmation">Konfirmasi Password</label>
+                                        <input class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Konfirmasi password baru Anda" required type="password" />
+                                    </div>
+
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 font-weight-bold" data-mdb-button-init data-mdb-ripple-init type="submit">Log in</button>
+                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 font-weight-bold" data-mdb-button-init data-mdb-ripple-init type="submit">Reset Password</button>
                                     </div>
-                                    <p class="text-center">Belum punya akun? <a href="{{ route("register") }}">Daftar</a></p>
-                                    <p class="text-center">Lupa password? <a href="{{ route("reset") }}">Reset</a></p>
+                                    <p class="text-center">Sudah punya akun? <a href="{{ route("login") }}">Login</a></p>
                                 </form>
                             </div>
                         </div>

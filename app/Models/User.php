@@ -30,12 +30,14 @@ class User extends Authenticatable
         'jabatan_id',
         'username',
         'password',
-        'status_aktivasi'
+        'status_aktivasi',
+        'reset_password_token',
     ];
 
     protected $hidden = [
         'password',
         'remember_token',
+        'reset_password_token',
     ];
 
     protected $attributes = [

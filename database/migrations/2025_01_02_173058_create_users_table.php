@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
             $table->string('username', 100)->unique();
             $table->string('password');
             $table->boolean('status_aktivasi')->default(0);
+            $table->string('reset_password_token', 60)->nullable();
             $table->timestamps();
 
             $table->foreign('divisi_id')->references('divisi_id')->on('divisi');

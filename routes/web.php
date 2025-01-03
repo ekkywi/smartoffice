@@ -18,6 +18,6 @@ use App\Http\Controllers\Auth\AuthController;
 route::get('/', [AuthController::class, 'index'])->name('login');
 route::get('login', [AuthController::class, 'index'])->name('login');
 
-
-Route::get('register', [AuthController::class, 'register'])->name('register');
-Route::post('register', [AuthController::class, 'registerPost'])->name('registerPost');
+// Rute untuk halaman registrasi
+Route::get('register', [AuthController::class, 'register'])->name('register'); // Menampilkan form registrasi
+Route::post('register', [AuthController::class, 'registerPost'])->name('registerPost'); // Memproses data registrasi

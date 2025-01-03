@@ -8,6 +8,7 @@ use App\Models\Divisi;
 use App\Models\Jabatan;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -37,6 +38,9 @@ class AuthController extends Controller
             'password' => 'required|string|confirmed|min:8',
         ]);
 
+        // Mmebuat token reset password
+        $resetPasswordToken = Str::random(60);
+
         // Membuat user baru
         User::create([
             'name' => $request->name,
@@ -45,9 +49,10 @@ class AuthController extends Controller
             'username' => $request->username,
             'password' => Hash::make($request->password),
             'status_aktivasi' => 0, // Nilai default
+            'reset_password_token' => $resetPasswordToken,
         ]);
 
         // Redirect ke halaman login dengan pesan sukses
-        return redirect()->route('login')->with('success', 'Registrasi berhasil. Silakan login.');
+        return redirect()->route('register')->with('success', 'Registrasi berhasil. Silakan lakukan request aktivasi akun ke Administrator.');
     }
 }

@@ -14,7 +14,7 @@ use App\Http\Controllers\Auth\AuthController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+// Rute untuk halaman login
 route::get('/', [AuthController::class, 'index'])->name('login');
 route::get('login', [AuthController::class, 'index'])->name('login');
 

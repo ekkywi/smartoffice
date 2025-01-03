@@ -6,12 +6,13 @@
 
 .gradient-form {
         background-image: url('/images/bg1.jpg');
+
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         height: 100vh;
-    }
-
+    }   
+     
 h1 {
     font-weight: bold;
 }

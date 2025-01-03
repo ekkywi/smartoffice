@@ -1,4 +1,7 @@
 @extends("auth.layouts.auth")
+@section("custom-css")
+    <link href="{{ asset("css/auth/register.css") }}" rel="stylesheet">
+@endsection
 @section("content")
 @section("title", "SmartOffice - Register")
 <section class="h-100 gradient-form">
@@ -89,6 +92,5 @@
                 </div>
             </div>
         </div>
-    </div>
 </section>
 @endsection

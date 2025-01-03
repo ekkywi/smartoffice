@@ -28,7 +28,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <form action="#" method="POST">
+                                <form action="" method="POST">
                                     @csrf
                                     <div class="form-outline mb-4" data-mdb-input-init>
                                         <label class="form-label" for="username">Username</label>
@@ -42,7 +42,7 @@
                                     <div class="text-center pt-1 mb-5 pb-1">
                                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 font-weight-bold" data-mdb-button-init data-mdb-ripple-init type="submit">Log in</button>
                                     </div>
-                                    <p class="text-center">Belum punya akun? <a href="#">Daftar</a></p>
+                                    <p class="text-center">Belum punya akun? <a href="{{ route("register") }}">Daftar</a></p>
                                     <p class="text-center">Lupa password? <a href="#">Klik disini</a></p>
                                 </form>
                             </div>

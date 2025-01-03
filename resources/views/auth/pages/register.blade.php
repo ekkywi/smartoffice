@@ -28,7 +28,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <form action="{{ route('register') }}" method="POST">
+                                <form action="{{ route("registerPost") }}" method="POST">
                                     @csrf
 
                                     <div class="form-outline mb-4" data-mdb-input-init>
@@ -73,7 +73,7 @@
 
                                     <div class="text-center pt-1 mb-5 pb-1">
                                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 font-weight-bold" data-mdb-button-init data-mdb-ripple-init type="submit">Register</button>
-                                        <p class="text-center">Sudah punya akun? <a href="#">Login</a></p>
+                                        <p class="text-center">Sudah punya akun? <a href="{{ route("login") }}">Login</a></p>
                                     </div>
 
                                 </form>

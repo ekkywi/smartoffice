@@ -11,15 +11,24 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function showRegistrationForm()
+    // Menampilkan halaman login
+    public function index()
+    {
+        return view('auth.pages.login');
+    }
+
+    // Menampilkan form registrasi dengan data divisi dan jabatan
+    public function register()
     {
         $divisi = Divisi::all();
         $jabatan = Jabatan::all();
         return view('auth.pages.register', compact('divisi', 'jabatan'));
     }
 
-    public function register(Request $request)
+    // Memproses data registrasi yang dikirimkan
+    public function registerPost(Request $request)
     {
+        // Validasi data yang diterima
         $request->validate([
             'name' => 'required|string|max:100',
             'divisi' => 'required|uuid|exists:divisi,divisi_id',
@@ -28,15 +37,17 @@ class AuthController extends Controller
             'password' => 'required|string|confirmed|min:8',
         ]);
 
+        // Membuat user baru
         User::create([
             'name' => $request->name,
             'divisi_id' => $request->divisi,
             'jabatan_id' => $request->jabatan,
             'username' => $request->username,
             'password' => Hash::make($request->password),
-            'status_aktivasi' => 0, // Default value
+            'status_aktivasi' => 0, // Nilai default
         ]);
 
-        return redirect()->route('login')->with('success', 'Registration successful. Please login.');
+        // Redirect ke halaman login dengan pesan sukses
+        return redirect()->route('login')->with('success', 'Registrasi berhasil. Silakan login.');
     }
 }

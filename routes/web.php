@@ -15,17 +15,9 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.pages.login');
-});
+route::get('/', [AuthController::class, 'index'])->name('login');
+route::get('login', [AuthController::class, 'index'])->name('login');
 
-Route::get('/login', function () {
-    return view('auth.pages.login');
-})->name('login');
 
-Route::get('/register', function () {
-    return view('auth.pages.register');
-});
-
-Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
-Route::post('register', [AuthController::class, 'register']);
+Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::post('register', [AuthController::class, 'registerPost'])->name('registerPost');
